@@ -1,38 +1,38 @@
-	package IntToEng.src;
-	
-	import java.util.Scanner;
-	
-	public class IntToEng {
-		public static void main(String[] args){
-			Scanner sc = new Scanner(System.in);
-			int input = sc.nextInt();
-			System.out.println(translateEng(input));
+package IntToEng.src;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Scanner;
+
+public class IntToEng {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int input = sc.nextInt();
+		System.out.println(translateEng(input));
+	}
+
+	static String translateEng(int n) {
+		String[] keta1 = new String[20];
+		try {
+			File file = new File(
+					"/home/usrc/g12950sn/mac/git/i/IntToEng/src/IntToEng/src/Number.txt");
+			@SuppressWarnings("resource")
+			FileReader filereader = new FileReader(file);
+
+			int ch;
+			int i = 0;
+			while ((ch = filereader.read()) != -1) {
+				// System.out.print((char)ch);
+				keta1[i] = Integer.toString(ch);
+				i++;
+			}
+		} catch (FileNotFoundException e) {
+			System.out.println(e);
+		} catch (IOException e) {
+			System.out.println(e);
 		}
-	
-	
-	static String translateEng(int n){
-		String [] keta1 = new String[20];
-		keta1[0] = "zero"; 
-				keta1[1] = " one";
-				keta1[2] = " two";
-				keta1[3] = " three";
-				keta1[4] = " four";
-				keta1[5] = " five";
-				keta1[6] = " six";
-				keta1[7] = " seven";
-				keta1[8] = " eight";
-				keta1[9] = " nine";
-				keta1[10] = " ten";
-				keta1[11] = " eleven";
-				keta1[12] = " twelve";
-				keta1[13] = " thirteen";
-				keta1[14] = " fourteen";
-				keta1[15] = " fifteen";
-				keta1[16] = " sixteen";
-				keta1[17] = " seventeen";
-				keta1[18] = " eighteen";
-				keta1[19] = " nineteen";
-				
-		return n+" "+keta1[n];
+		return n + " " + keta1[n];
 	}
-	}
+}
