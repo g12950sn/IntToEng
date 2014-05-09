@@ -30,4 +30,20 @@ public class IntToEngTest {
 		String actual = To.translateEng(666);
 		assertThat(actual,is(expected));
 	}
+	
+	@Test
+	public void 四桁の数字の表示() {
+		IntToEng To = new IntToEng();
+		String expected = "6666 six thousand six hundred sixty six";
+		String actual = To.translateEng(6666);
+		assertThat(actual,is(expected));
+	}
+	
+	@Test
+	public void 四桁の数字の表示2() {
+		IntToEng To = new IntToEng();
+		String expected = "6066 six thousand sixty six";
+		String actual = To.translateEng(6066);
+		assertThat(actual,is(expected));
+	}
 }
