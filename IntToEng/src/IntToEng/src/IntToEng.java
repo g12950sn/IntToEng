@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class IntToEng {
+
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		int input = sc.nextInt();
@@ -14,25 +15,21 @@ public class IntToEng {
 	}
 
 	static String translateEng(int n) {
-		String[] keta1 = new String[20];
-		try {
-			File file = new File(
-					"/home/usrc/g12950sn/mac/git/i/IntToEng/src/IntToEng/src/Number.txt");
-			@SuppressWarnings("resource")
-			FileReader filereader = new FileReader(file);
-
-			int ch;
-			int i = 0;
-			while ((ch = filereader.read()) != -1) {
-				// System.out.print((char)ch);
-				keta1[i] = Integer.toString(ch);
-				i++;
-			}
-		} catch (FileNotFoundException e) {
-			System.out.println(e);
-		} catch (IOException e) {
-			System.out.println(e);
+		String[] keta1 = { "zero", "one", "two", "three", "four", "five",
+				"six", "seven", "eight", "nine", "ten", "eleven", "twelve",
+				"thirteen", "fourteen", "fifteen", "sixteen", "seventeen",
+				"eighteen", "nineteen", };
+		String[] keta2 = { "", "", "twenty", "thirty", "forty", "fifty",
+				"sixty", "seventy", "eighty", "ninety" };
+		if (n < 20) {
+			return n + " " + keta1[n];
+		} else if (n < 100)
+			return n + " " + keta2[n / 10] + keta1[n % 10];
+		else {
+			int a = n / 100;
+			int b = n - a * 100;
+			return n + " " + keta1[n / 100] + "handred" + keta2[b / 10]
+					+ keta1[b % 10];
 		}
-		return n + " " + keta1[n];
 	}
 }
